@@ -1,0 +1,114 @@
+{
+  "name": "agenda_auto",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "c82dd3a5-7869-4fb6-ad0f-4ed69085e3d2",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e6ed6ac4-84ec-44eb-b925-7c2afe0a0cfd",
+              "name": "titele",
+              "value": "Reunion test",
+              "type": "string"
+            },
+            {
+              "id": "e530e61f-6483-4e0d-a7bf-0e7d4616e999",
+              "name": "start",
+              "value": "2025-12-24T10:00:00",
+              "type": "string"
+            },
+            {
+              "id": "d3507460-4e5a-4c3d-ab85-d2822e44351e",
+              "name": "end",
+              "value": "2025-12-24T11:00:00",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "94e28a9e-3208-4dc4-981e-8bd41cb2ad7d",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "rihabh18@gmail.com",
+          "mode": "list",
+          "cachedResultName": "rihabh18@gmail.com"
+        },
+        "end": "={{ $now.plus(2, 'hour') }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        416,
+        0
+      ],
+      "id": "d6bddd34-97bd-44eb-823f-f897a8c4d2be",
+      "name": "Create an event",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "YkeoHuZtMcHqRVeJ",
+          "name": "Googleauth"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Create an event",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "cc040884-263d-43b2-ad91-00e29c3a6bd9",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "8355d98d0bf8e676ae35302485bcdb954220f2ad3b01f4697189ea2aebcc7afe"
+  },
+  "id": "klv5zhki2cZkZnnM",
+  "tags": []
+}
